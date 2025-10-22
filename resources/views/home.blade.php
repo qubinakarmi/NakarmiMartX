@@ -78,7 +78,7 @@
     <section class="my-3">
         <div class="container">
             <div>
-                <h1>Top Deals</h1>
+                <hr><h1 class="text-center"><i class="fa-solid fa-layer-group"></i>Top Deals</h1><hr>
             </div>
             {{-- <div class="row">
 

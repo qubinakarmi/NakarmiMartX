@@ -21,11 +21,11 @@
     <nav class="navbar navbar-expand-lg theme-blue">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <h1  style="color: #fff8dc; font-family:Poppins;">NakarmiMartX</h1>
+                <h1 style="color: #fff8dc; font-family:Poppins;">NakarmiMartX</h1>
             </a>
             <a class="navbar-brand text-light nav-sub" href="{{ route('home') }}">
                 Home
-            </a> 
+            </a>
             <a class="navbar-brand text-light nav-sub" href="{{ route('about') }}">
                 About
             </a>
@@ -61,7 +61,8 @@
                 @if (Route::has('login'))
                     @auth
                         <a href="{{ route('dashboard') }}" class="btn theme-orange-btn btn-sm text-light"><i
-                                class="fa-solid fa-user"></i>Dashboard <i class="fa-solid fa-circle" style="color: green;"></i></a>
+                                class="fa-solid fa-user"></i>Dashboard <i class="fa-solid fa-circle"
+                                style="color: green;"></i></a>
                     @else
                         <a href="{{ route('login') }}" class="btn theme-orange-btn btn-sm text-light"><i
                                 class="fa-solid fa-user"></i>login </a>
