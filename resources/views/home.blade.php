@@ -125,7 +125,7 @@
                         </div>
                     </div>
                 @empty
-                    <p class="text-center text-muted">No {{ ucfirst($category) }} products found.</p>
+                    <p class="text-center text-muted">No  products found.</p>
                 @endforelse
             </div>
 
