@@ -32,20 +32,56 @@ class UserController extends Controller
     // }
 
     public function home()
-{
-    // Get only top deals
-    $products = Product::where('is_top_deal', true)->get();
+    {
+        // Get only top deals
+        $products = Product::where('is_top_deal', true)->get();
 
-    return view('home', compact('products'));
-}
+        return view('home', compact('products'));
+    }
 
 
-public function category($category)
-{
-    $products = Product::where('category', $category)->get();
+    public function mobiles()
+    {
+      
+        $products = Product::where('category', 'mobiles')->get();
 
-    return view('category', compact('products', 'category'));
-}
+        return view('mobiles', compact('products'));
+    }
+
+    public function fashions()
+    {
+        // Get only top deals
+        $products = Product::where('category', 'fashions')->get();
+
+        return view('fashions', compact('products'));
+    }
+
+    public function electronics()
+    {
+        // Get only top deals
+        $products = Product::where('category', 'electronics')->get();
+
+        return view('electronics', compact('products'));
+     
+    }
+
+    public function furnitures()
+    {
+        // Get only top deals
+        $products = Product::where('category', 'furnitures')->get();
+
+        return view('furnitures', compact('products'));
+    }
+
+    public function grocery()
+    {
+        // Get only top deals
+        $products = Product::where('category', 'grocery')->get();
+
+        return view('grocery', compact('products'));
+    }
+
+
 
 
 

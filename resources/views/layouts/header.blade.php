@@ -55,7 +55,7 @@
                 <a href="1" class="text-decoration-none text-light">Become seller</a>
 
 
-                <a class="btn theme-green-btn btn-sm text-light" href="{{ route('cart.index') }}">
+                <a class="btn theme-green-btn btn-sm text-light" href="">
                     <i class="fa-solid fa-cart-shopping"></i> Cart ({{ count(session('cart', [])) }})
                 </a>
                 @if (Route::has('login'))
@@ -84,26 +84,26 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a href="{{ route('products.category', 'mobile') }}"
+                        <a href="{{ route('mobiles') }}"
                             class="nav-link active text-dark mx-2">Mobiles</a>
                     </li>
 
                     <li class="nav-item">
                         {{-- <a class="nav-link active text-dark" href="#">Fashions</a> --}}
-                        <a href="{{ route('products.category', 'fashions') }}"
+                        <a href="{{ route('fashions') }}"
                             class="nav-link active text-dark mx-2">Fashions</a>
 
                     </li>
                     <li class="nav-item">
 
-                        <a href="{{ route('products.category', 'electronics') }}"
+                        <a href="{{ route('electronics') }}"
                             class="nav-link active text-dark mx-2">Electronics</a>
 
                     </li>
 
                     <li class="nav-item">
 
-                        <a href="{{ route('products.category', 'furnitures') }}"
+                        <a href="{{ route('furnitures') }}"
                             class="nav-link active text-dark mx-2">Furnitures</a>
 
 
@@ -111,7 +111,7 @@
 
                     <li class="nav-item">
 
-                        <a href="{{ route('products.category', 'grocery') }}"
+                        <a href="{{ route('grocery') }}"
                             class="nav-link active text-dark mx-2">Grocery</a>
 
                     </li>
