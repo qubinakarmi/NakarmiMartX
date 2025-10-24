@@ -5,6 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Contact;
+use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
+
+
 
 class UserController extends Controller
 {
@@ -42,7 +49,7 @@ class UserController extends Controller
 
     public function mobiles()
     {
-      
+
         $products = Product::where('category', 'mobiles')->get();
 
         return view('mobiles', compact('products'));
@@ -62,7 +69,6 @@ class UserController extends Controller
         $products = Product::where('category', 'electronics')->get();
 
         return view('electronics', compact('products'));
-     
     }
 
     public function furnitures()
@@ -89,4 +95,64 @@ class UserController extends Controller
     {
         return view('addProduct');
     }
+
+    function contact(Request $request)
+
+    {
+        $contact = new Contact();
+        $contact->email = $request->email;
+        $contact->phone = $request->phone;
+        $contact->address = $request->address;
+        $contact->message = $request->message;
+        if ($contact->save()) {
+            return redirect()->intended(route('contact'))->with('success', 'Your contact form has been received');
+        }
+
+
+
+
+        return $request->message;
+    }
+
+    public function cart() {}
+    public function AddToCart(Request $request)
+    {
+
+        $cart = new Cart();
+        $cart->user_id = Auth::id(); // automatically logged-in user's ID
+        $cart->product_id = $request->product_id;
+        $cart->save();
+
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
+    }
+
+    static function cartItem()
+    {
+        $userId=Auth::id();
+        return Cart::where('user_id',$userId)->count();
+    }
+
+    function cartList()
+    {
+        $userId=Auth::id();
+       $data=  DB::table('carts')
+        ->join('products','carts.product_id','products.id')
+        ->select('products.*')
+        ->where('carts.user_id',$userId)
+        ->get();
+
+        return view('cartlist',['products'=>$data]);
+    }
+
+    function cartDelete($id)
+
+    {
+        $delete_cart=Cart::Destroy($id);
+        if($delete_cart)
+        {
+            return redirect()->intended(route('cart.list'))->with('danger','item has been deleted');
+        }
+    }
+
+    
 }

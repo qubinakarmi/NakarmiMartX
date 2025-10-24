@@ -8,11 +8,13 @@
 
 /* Color Theme */
 .theme-blue {
-    background-color: #004aad; /* Deeper blue */
+    background-color: #004aad;
+    /* Deeper blue */
 }
 
 .theme-navbar-light {
-    background-color: #e3f2fd; /* Softer navbar */
+    background-color: #e3f2fd;
+    /* Softer navbar */
 }
 
 .theme-orange-btn {
@@ -37,7 +39,8 @@
 }
 
 .theme-footer {
-    background-color: #002b5c; /* Deep navy for contrast */
+    background-color: #004aad;
+    /* Deep navy for contrast */
     color: #fff;
 }
 
@@ -86,10 +89,11 @@
 
 .nav-link:hover {
     border: 1px solid #004aad;
-    background-color: #e3f2fd;
-    border-radius: 5px;
+    border-radius: 8px;
+    transition: 5s;
 }
-.nav-sub:hover{
+
+.nav-sub:hover {
     border: 1px solid rgba(245, 245, 245, 0.456);
     border-radius: 6px;
     padding: 5px;
@@ -128,14 +132,41 @@
 .footer-links a:hover {
     color: #ff6600;
 }
+
 @media (max-width: 768px) {
     .carousel-caption h2 {
         font-size: 1.5rem;
     }
+
     .carousel-caption p {
         font-size: 1rem;
     }
+
     .card {
         width: 100%;
     }
+}
+
+.fa-facebook-f:hover {
+    color: #0d6efd;
+    /* Bootstrap primary color */
+    transition: color 0.3s ease;
+}
+.fa-twitter:hover{
+
+     color: rgb(49, 193, 49);
+    /* Bootstrap primary color */
+    transition: color 0.3s ease;
+
+}
+.fa-instagram:hover{
+     color: #E1306C;
+    /* Bootstrap primary color */
+    transition: color 0.3s ease;
+
+}
+.fa-linkedin-in:hover{
+         color: blue;
+    /* Bootstrap primary color */
+    transition: color 0.3s ease;
 }

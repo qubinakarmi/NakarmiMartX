@@ -18,122 +18,108 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg theme-blue">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <h1 style="color: #fff8dc; font-family:Poppins;">NakarmiMartX</h1>
-            </a>
-            <a class="navbar-brand text-light nav-sub" href="{{ route('home') }}">
-                Home
-            </a>
-            <a class="navbar-brand text-light nav-sub" href="{{ route('about') }}">
-                About
-            </a>
-            <a class="navbar-brand text-light nav-sub" href="{{ route('contact') }}">
-                Contact
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <?php 
+        use App\Http\Controllers\UserController;
+        $total=UserController::cartItem();
+?>  
 
-            <div>
-                <form class="d-flex" role="search">
-                    <div class="input-group">
-                        <input class="form-control form-control-sm " style="width:350px;" type="search"
-                            placeholder="Search for products" aria-label="Search" />
-                        <button class="btn btn-light btn-sm text-secondary" type="submit"><i
-                                class="fa-solid fa-magnifying-glass"></i></button>
+  <nav class="navbar navbar-expand-lg theme-blue">
+    <div class="container">
+        <!-- Logo / Brand -->
+        <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}">
+            <h1 class="m-0" style="color: #fff8dc; font-family: Poppins;">NakarmiMartX</h1>
+        </a>
 
-                    </div>
+        <!-- Mobile Toggler -->
+        <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-                </form>
-            </div>
+        <!-- Collapsible Menu -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Left Nav Links -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="{{ route('home') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="{{ route('about') }}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="{{ route('contact') }}">Contact</a>
+                </li>
+            </ul>
 
-            <div>
-                <a href="1" class="text-decoration-none text-light">Become seller</a>
+            <!-- Center Search Bar -->
+            <form class="d-flex me-3" role="search">
+                <div class="input-group">
+                    <input class="form-control form-control-sm" style="width: 300px;" type="search"
+                        placeholder="Search for products" aria-label="Search">
+                    <button class="btn btn-light btn-sm text-secondary" type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </form>
 
+            <!-- Right Buttons -->
+            <div class="d-flex align-items-center">
+                <a href="#" class="text-decoration-none text-light me-3">Become Seller</a>
 
-                <a class="btn theme-green-btn btn-sm text-light" href="">
-                    <i class="fa-solid fa-cart-shopping"></i> Cart ({{ count(session('cart', [])) }})
+                <a class="btn theme-green-btn btn-sm text-light me-2" href="{{ route('cart.list') }}">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Cart({{ $total }})
                 </a>
+
                 @if (Route::has('login'))
                     @auth
-                        <a href="{{ route('dashboard') }}" class="btn theme-orange-btn btn-sm text-light"><i
-                                class="fa-solid fa-user"></i>Dashboard <i class="fa-solid fa-circle"
-                                style="color: green;"></i></a>
+                        <a href="{{ route('dashboard') }}" class="btn theme-orange-btn btn-sm text-light">
+                            <i class="fa-solid fa-user"></i>
+                            Dashboard <i class="fa-solid fa-circle ms-1" style="color: green;"></i>
+                        </a>
                     @else
-                        <a href="{{ route('login') }}" class="btn theme-orange-btn btn-sm text-light"><i
-                                class="fa-solid fa-user"></i>login </a>
-
-
+                        <a href="{{ route('login') }}" class="btn theme-orange-btn btn-sm text-light">
+                            <i class="fa-solid fa-user"></i> Login
+                        </a>
                     @endauth
                 @endif
-
-
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
+
 
     {{-- secondary nav --}}
 
-    <nav class="navbar navbar-expand-lg theme-navbar-light">
-        <div class="container-fluid ">
+<!-- Secondary Navbar -->
+<nav class="navbar navbar-expand-lg theme-navbar-light">
+    <div class="container">
+        <!-- Toggler Button for Small Screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#secondaryNavbar"
+            aria-controls="secondaryNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a href="{{ route('mobiles') }}"
-                            class="nav-link active text-dark mx-2">Mobiles</a>
-                    </li>
-
-                    <li class="nav-item">
-                        {{-- <a class="nav-link active text-dark" href="#">Fashions</a> --}}
-                        <a href="{{ route('fashions') }}"
-                            class="nav-link active text-dark mx-2">Fashions</a>
-
-                    </li>
-                    <li class="nav-item">
-
-                        <a href="{{ route('electronics') }}"
-                            class="nav-link active text-dark mx-2">Electronics</a>
-
-                    </li>
-
-                    <li class="nav-item">
-
-                        <a href="{{ route('furnitures') }}"
-                            class="nav-link active text-dark mx-2">Furnitures</a>
-
-
-                    </li>
-
-                    <li class="nav-item">
-
-                        <a href="{{ route('grocery') }}"
-                            class="nav-link active text-dark mx-2">Grocery</a>
-
-                    </li>
-                    {{-- <li class="nav-item">
-
-                        <a href="{{ route('products.category', 'applinces') }}"
-                            class="nav-link active text-dark mx-2">Applinces</a>
-
-                    </li> --}}
-
-
-
-
-
-
-
-
-
-
-
-
-                </ul>
-            </div>
+        <!-- Collapsible Menu -->
+        <div class="collapse navbar-collapse justify-content-center" id="secondaryNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="{{ route('mobiles') }}" class="nav-link text-dark mx-2">Mobiles</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('fashions') }}" class="nav-link text-dark mx-2">Fashions</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('electronics') }}" class="nav-link text-dark mx-2">Electronics</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('furnitures') }}" class="nav-link text-dark mx-2">Furnitures</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('grocery') }}" class="nav-link text-dark mx-2">Grocery</a>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
+

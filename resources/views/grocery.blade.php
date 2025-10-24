@@ -88,9 +88,12 @@
                             <div class="card-body text-center">
                                 <h5 class="card-title">{{ $product->title }}</h5>
                                 <p class="card-text">₹{{ $product->amount }}</p>
-                                <a href="" class="btn btn-primary">
-                                    <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                                </a>
+                                <form action="{{ route('add.cart.item') }}" method="Post">
+                                @csrf
+
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    <button class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i>Add to cart</button>
+                                </form>
                             </div>
                         </div>
                     </div>

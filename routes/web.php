@@ -34,16 +34,23 @@ Route::middleware('auth')->group(function () {
     // sub category route
     Route::controller(UserController::class)->group(function () {
 
-    Route::get('mobiles', 'mobiles')->name('mobiles');
-    Route::get('fashions', 'fashions')->name('fashions');
-    Route::get('electronics', 'electronics')->name('electronics');
-    Route::get('furnitures', 'furnitures')->name('furnitures');
-    Route::get('grocery', 'grocery')->name('grocery');
+        Route::get('mobiles', 'mobiles')->name('mobiles');
+        Route::get('fashions', 'fashions')->name('fashions');
+        Route::get('electronics', 'electronics')->name('electronics');
+        Route::get('furnitures', 'furnitures')->name('furnitures');
+        Route::get('grocery', 'grocery')->name('grocery');
+
+
+        Route::view('contact', 'contact')->name('contact');
+        Route::view('about', 'about')->name('about');
+        Route::post('cart','AddToCart')->name('add.cart.item');
+        Route::get('cart/list','cartList')->name('cart.list');
+        
+
 
     });
-
-    Route::view('contact', 'contact')->name('contact');
-    Route::view('about', 'about')->name('about');
+    Route::post('contact', [UserController::class, 'contact'])->name('contact');
+    Route::get('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 });
 
 require __DIR__ . '/auth.php';

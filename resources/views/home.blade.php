@@ -80,34 +80,7 @@
             <div>
                 <hr><h1 class="text-center"><i class="fa-solid fa-layer-group"></i>Top Deals</h1><hr>
             </div>
-            {{-- <div class="row">
-
-                @foreach ($products as $product)
-                    <div class="col-md-3 col-sm-8">
-
-                        <div class="card" style="width: 20rem;">
-
-                            <img src="{{ asset('product_images/' . $product->image) }}" class="card-img-top "
-                                alt="...">
-                            <span class="badge bg-danger position-absolute top-0 start-0 m-2">-10%</span>
-
-
-
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $product->title }}</h5>
-                                <h6 class="card-text">₹{{ $product->amount }}</h6>
-
-                                <a href="{{ route('cart.add', $product->id) }}" class="btn btn-primary">
-                                    <i class="fa-solid fa-cart-shopping"></i> Add to cart
-                                </a>
-
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-
-
-            </div> --}}
+    
 
             <div class="row">
                 @forelse ($products as $product)
@@ -118,9 +91,16 @@
                             <div class="card-body text-center">
                                 <h5 class="card-title">{{ $product->title }}</h5>
                                 <p class="card-text">₹{{ $product->amount }}</p>
-                                <a href="{{ route('cart.add', $product->id) }}" class="btn btn-primary">
+
+                              <form action="{{ route('add.cart.item') }}" method="Post">
+                                @csrf
+
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    <button class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i>Add to cart</button>
+                                </form>
+                                 {{-- <a href="{{ route('add.cart',$product->id) }}" class="btn btn-primary">
                                     <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                                </a>
+                                </a> --}}
                             </div>
                         </div>
                     </div>
