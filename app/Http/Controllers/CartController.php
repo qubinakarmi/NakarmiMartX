@@ -87,6 +87,7 @@ class CartController extends Controller
             ->where('orders.user_id', $userId)
             ->get();
 
+
         return view('orders', ['products' => $total]);
 
     }

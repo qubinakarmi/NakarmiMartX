@@ -17,19 +17,22 @@
             <td>
                 <h2>Title</h2>
             </td>
-    
+
             <td>
                 <h2>price</h2>
             </td>
-               <td>
+            <td>
                 <h2>status</h2>
             </td>
-               <td>
+            <td>
                 <h2>Payment Method</h2>
             </td>
-               <td>
+            <td>
                 <h2>Payment Status</h2>
             </td>
+        
+
+
 
 
 
@@ -48,21 +51,27 @@
                 <td>
                     <p style="font-size: 1.5rem;">{{ $product->status }}</p>
                 </td>
-                  <td>
+                <td>
                     <p style="font-size: 1.5rem;">{{ $product->payment_method }}</p>
                 </td>
-                     <td>
+                <td>
                     <p style="font-size: 1.5rem;">{{ $product->payment_status }}</p>
                 </td>
 
-
-
-
              
 
+
+
+
             </tr>
+           
+            
         @endforeach
+      
+        
     </table>
+
+    <h1 class="mx-3 text-center">Total={{ $products->sum('amount') }}</h1>
 
 
 
