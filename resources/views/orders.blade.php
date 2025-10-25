@@ -4,20 +4,10 @@
 
 
 
-    @if (session('danger'))
-        <div class="alert alert-danger my-2">{{ session('danger') }}</div>
-    @endif
-
-    @if (session('error'))
-        <div class="alert alert-danger">{{ session('error') }}</div>
-    @endif
-
-
-    <div class="py-3">
-        <h1 class="text-center"> <b> Cart Items</b></h1>
+    <div class="py-2">
+        <h1 class="text-center"> <b> Ordered Items</b></h1>
     </div>
 
-    <a href="{{ route('ordernow') }}" class="btn btn-success mx-3"> Order Now</a>
 
     <table class="table  my-2 table-hover mx-3">
         <tr>
@@ -27,11 +17,18 @@
             <td>
                 <h2>Title</h2>
             </td>
+    
             <td>
-                <h2>Amount</h2>
+                <h2>price</h2>
             </td>
-            <td>
-                <h2>Action</h2>
+               <td>
+                <h2>status</h2>
+            </td>
+               <td>
+                <h2>Payment Method</h2>
+            </td>
+               <td>
+                <h2>Payment Status</h2>
             </td>
 
 
@@ -48,14 +45,20 @@
                 <td>
                     <p style="font-size: 1.5rem;">{{ $product->amount }}</p>
                 </td>
-
-
-
                 <td>
-                    <a href="{{ url('cart/delete/' . $product->cart_id) }}" class="btn btn-outline-danger">
-                        <i class="fa-solid fa-trash"> </i>
-                    </a>
+                    <p style="font-size: 1.5rem;">{{ $product->status }}</p>
                 </td>
+                  <td>
+                    <p style="font-size: 1.5rem;">{{ $product->payment_method }}</p>
+                </td>
+                     <td>
+                    <p style="font-size: 1.5rem;">{{ $product->payment_status }}</p>
+                </td>
+
+
+
+
+             
 
             </tr>
         @endforeach

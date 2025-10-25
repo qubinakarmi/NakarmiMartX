@@ -6,9 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Contact;
-use App\Models\Cart;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+
 
 
 
@@ -114,45 +112,7 @@ class UserController extends Controller
         return $request->message;
     }
 
-    public function cart() {}
-    public function AddToCart(Request $request)
-    {
 
-        $cart = new Cart();
-        $cart->user_id = Auth::id(); // automatically logged-in user's ID
-        $cart->product_id = $request->product_id;
-        $cart->save();
-
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
-    }
-
-    static function cartItem()
-    {
-        $userId=Auth::id();
-        return Cart::where('user_id',$userId)->count();
-    }
-
-    function cartList()
-    {
-        $userId=Auth::id();
-       $data=  DB::table('carts')
-        ->join('products','carts.product_id','products.id')
-        ->select('products.*')
-        ->where('carts.user_id',$userId)
-        ->get();
-
-        return view('cartlist',['products'=>$data]);
-    }
-
-    function cartDelete($id)
-
-    {
-        $delete_cart=Cart::Destroy($id);
-        if($delete_cart)
-        {
-            return redirect()->intended(route('cart.list'))->with('danger','item has been deleted');
-        }
-    }
-
+    
     
 }

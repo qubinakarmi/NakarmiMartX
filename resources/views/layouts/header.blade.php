@@ -19,8 +19,8 @@
 <body>
 
     <?php 
-        use App\Http\Controllers\UserController;
-        $total=UserController::cartItem();
+        use App\Http\Controllers\CartController;
+        $total=CartController::cartItem();
 ?>  
 
   <nav class="navbar navbar-expand-lg theme-blue">
@@ -48,6 +48,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-light" href="{{ route('contact') }}">Contact</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link text-light" href="{{ route('myorder') }}">Orders</a>
                 </li>
             </ul>
 

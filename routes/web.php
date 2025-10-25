@@ -31,9 +31,10 @@ Route::middleware('auth')->group(function () {
     Route::post('add', [UserController::class, 'newProduct'])->name('add.product');
 
 
-    // sub category route
     Route::controller(UserController::class)->group(function () {
 
+
+        // sub category route
         Route::get('mobiles', 'mobiles')->name('mobiles');
         Route::get('fashions', 'fashions')->name('fashions');
         Route::get('electronics', 'electronics')->name('electronics');
@@ -42,15 +43,22 @@ Route::middleware('auth')->group(function () {
 
 
         Route::view('contact', 'contact')->name('contact');
+        Route::post('contact', 'contact')->name('contact');
         Route::view('about', 'about')->name('about');
-        Route::post('cart','AddToCart')->name('add.cart.item');
-        Route::get('cart/list','cartList')->name('cart.list');
-        
-
-
     });
-    Route::post('contact', [UserController::class, 'contact'])->name('contact');
-    Route::get('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+
+    // cart
+    Route::controller(CartController::class)->group(function () {
+
+        Route::post('cart', 'AddToCart')->name('add.cart.item');
+        Route::get('cart/list', 'cartList')->name('cart.list');
+
+        Route::get('/cart/delete/{id}', 'removeCart')->name('cart.remove');
+        Route::get('ordernow', 'orderNow')->name('ordernow');
+        Route::post('placeorder', 'placeorder')->name('placeorder');
+
+        Route::get('myorder', 'myOrder')->name('myorder');
+    });
 });
 
 require __DIR__ . '/auth.php';

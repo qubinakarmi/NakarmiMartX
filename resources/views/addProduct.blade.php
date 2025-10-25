@@ -5,16 +5,25 @@
     @endif
 
 
-    <div class="add">
+    <div class="add d-flex justify-content-center my-3">
+    
         <div>
+                <h1 class="text-center text-secondary">Add Product</h1>
             <form action="{{ route('add.product') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                <input type="text" name="title" id="" placeholder="Enter a title"><br><br>
-                <input type="text" name="amount" id="" placeholder="Enter a amount"><br><br>
-                <input type="text" name="category" id="" placeholder="Enter a category"><br><br>
+                <input type="text" class="form-control  my-2" name="title" id="" placeholder="Enter a title">
+                <input type="text" class="form-control my-2" name="amount" id="" placeholder="Enter a amount">
+         
+                <select name="category" class="form-control my-2">
+                    <option value="mobiles">mobiles</option>
+                    <option value="fashions">fashions</option>
+                    <option value="electronics">electronics</option>
+                    <option value="furnitures">furnitures</option>
+                    <option value="grocery">grocery</option>
 
-                <input type="file" name="file" id=""><br><br>
-                <button>submit</button>
+                </select>
+                <input type="file"class="form-control my-2" name="file">
+                <button class="btn btn-info my-2">submit</button>
 
 
             </form>
