@@ -58,6 +58,7 @@ Route::middleware('auth')->group(function () {
         Route::post('placeorder', 'placeorder')->name('placeorder');
 
         Route::get('myorder', 'myOrder')->name('myorder');
+        Route::get('search','search')->name('search');
     });
 });
 

@@ -22,6 +22,9 @@
                 <h2>price</h2>
             </td>
             <td>
+                <Address></Address>
+            </td>
+            <td>
                 <h2>status</h2>
             </td>
             <td>
@@ -47,6 +50,9 @@
                 </td>
                 <td>
                     <p style="font-size: 1.5rem;">{{ $product->amount }}</p>
+                </td>
+                  <td>
+                    <p style="font-size: 1.5rem;">{{ $product->address }}</p>
                 </td>
                 <td>
                     <p style="font-size: 1.5rem;">{{ $product->status }}</p>

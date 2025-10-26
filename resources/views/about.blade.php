@@ -1,10 +1,10 @@
 @extends('layouts.main')
 @section('title', 'About Page')
 @section('content')
-    <h1 class="text-center mt-5">About NakrmiMartX</h1>
+    <h1 class="text-center mt-5">About NakarmiMartX</h1>
     <hr>
 
-
+   
 
 
 

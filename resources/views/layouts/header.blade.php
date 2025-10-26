@@ -55,10 +55,11 @@
             </ul>
 
             <!-- Center Search Bar -->
-            <form class="d-flex me-3" role="search">
+            <form  action="{{ route('search') }}"class="d-flex me-3" role="search" method="GET">
+            
                 <div class="input-group">
                     <input class="form-control form-control-sm" style="width: 300px;" type="search"
-                        placeholder="Search for products" aria-label="Search">
+                        placeholder="Search for products" aria-label="Search" name="search" value="{{ old('search') }}">
                     <button class="btn btn-light btn-sm text-secondary" type="submit">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>

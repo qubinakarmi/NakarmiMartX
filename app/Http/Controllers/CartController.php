@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\Product;
+
 
 use Illuminate\Support\Facades\DB;
 
@@ -90,5 +92,14 @@ class CartController extends Controller
 
         return view('orders', ['products' => $total]);
 
+    }
+
+    function search(Request $request)
+
+    {
+        $data=$request->search;
+        $products=Product::where('title','LIKE',"%{$data}%" )->paginate(2)
+        ;
+        return view('search',compact('products')) ;
     }
 }
