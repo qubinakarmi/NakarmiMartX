@@ -14,11 +14,11 @@
 
 
     <div class="py-3">
-        <h1 class="text-center"> <b> order Items</b></h1>
+        <h1 class="text-center"> <b> Order Items</b></h1>
     </div>
 
 
-    <div class="table-responsive-sm">
+    <div class="table-responsive-sm d-flex justify-content-center mx-3">
         <table class="table table-sm  my-2 table-hover">
             <tr>
 

@@ -77,7 +77,7 @@
 
                 @if (Route::has('login'))
                     @auth
-                        <a href="{{ route('dashboard') }}" class="btn theme-orange-btn btn-sm text-light mx-3">
+                        <a href="{{ route('dashboard') }}" class="btn theme-orange-btn btn-sm text-light">
                             <i class="fa-solid fa-user"></i>
                             Dashboard 
                         </a>

@@ -39,7 +39,7 @@ class UserController extends Controller
     public function home()
     {
         // Get only top deals
-        $products = Product::where('is_top_deal', true)->get();
+        $products = Product::where('is_top_deal', true)->orderBy('created_at', 'desc')->get();
 
         return view('home', compact('products'));
     }

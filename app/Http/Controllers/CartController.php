@@ -23,7 +23,7 @@ class CartController extends Controller
         $cart->product_id = $request->product_id;
         $cart->save();
 
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+        return redirect()->back();
     }
 
     static function cartItem()
@@ -39,7 +39,7 @@ class CartController extends Controller
             ->join('products', 'carts.product_id', 'products.id')
             ->select('products.*', 'carts.id as cart_id')
             ->where('carts.user_id', $userId)
-            ->get();
+            ->latest()->get();
 
         return view('cartlist', ['products' => $data]);
     }
