@@ -97,6 +97,14 @@ class UserController extends Controller
     function contact(Request $request)
 
     {
+        $request->validate([
+            'email' => 'required|email',
+            'phone' => 'required|max:10',
+             'address'=>'required|min:10',
+             'message'=>'required',
+
+
+        ]);
         $contact = new Contact();
         $contact->email = $request->email;
         $contact->phone = $request->phone;
@@ -111,8 +119,4 @@ class UserController extends Controller
 
         return $request->message;
     }
-
-
-    
-    
 }

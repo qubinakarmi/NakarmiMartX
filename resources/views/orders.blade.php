@@ -8,8 +8,8 @@
         <h1 class="text-center"> <b> Ordered Items</b></h1>
     </div>
 
-
-    <table class="table  my-2 table-hover mx-3">
+    <div class="table-responsive-sm">
+    <table class="table table-sm  my-2 table-hover mx-3">
         <tr>
             <td>
                 <h2>Image</h2>
@@ -76,6 +76,7 @@
       
         
     </table>
+    </div>
 
     <h1 class="mx-3 text-center">Total={{ $products->sum('amount') }}</h1>
 

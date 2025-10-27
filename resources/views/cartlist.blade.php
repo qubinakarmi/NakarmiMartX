@@ -18,8 +18,9 @@
     </div>
 
     <a href="{{ route('ordernow') }}" class="btn btn-success mx-3"> Order Now</a>
+    <div class="table-responsive-sm">
 
-    <table class="table  my-2 table-hover mx-3">
+    <table class="table table-sm my-2 table-hover mx-3">
         <tr>
             <td>
                 <h2>Image</h2>
@@ -60,6 +61,7 @@
             </tr>
         @endforeach
     </table>
+ </div>
 
 
 

@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\EsewaController;
+use App\Models\Payment;
 
 
 
@@ -60,6 +62,39 @@ Route::middleware('auth')->group(function () {
         Route::get('myorder', 'myOrder')->name('myorder');
         Route::get('search','search')->name('search');
     });
+
+
+
+
+
+
+     
+
+Route::get('/checkout', [EsewaController::class, 'checkout'])->name('checkout');
+Route::post('/esewa/pay', [EsewaController::class, 'pay'])->name('esewa.pay');
+Route::get('/esewa/success', [EsewaController::class, 'success'])->name('esewa.success');
+Route::get('/esewa/failure', [EsewaController::class, 'failure'])->name('esewa.failure');
+
+// optional admin listing of payments
+Route::get('/payments', function () {
+    $payments = \App\Models\Payment::orderBy('id', 'desc')->get();
+    return view('payments', compact('payments'));
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 });
 
 require __DIR__ . '/auth.php';

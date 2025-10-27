@@ -65,6 +65,9 @@ class CartController extends Controller
 
     function placeOrder(Request $request)
     {
+        $request->validate(
+            ['address'=>'required',]
+        );
         $userId = Auth::id();
         $allcart = Cart::where('user_id', $userId)->get();
         foreach ($allcart as $cart) {
