@@ -153,6 +153,9 @@
     .card {
         width: 100%;
     }
+    .rep{
+        margin-right: 15px;
+    }
 }
 
 .fa-facebook-f:hover {

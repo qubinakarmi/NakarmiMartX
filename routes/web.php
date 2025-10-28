@@ -34,19 +34,20 @@ Route::middleware('auth')->group(function () {
 
 
     Route::controller(UserController::class)->group(function () {
-
-
-        // sub category route
-        Route::get('mobiles', 'mobiles')->name('mobiles');
-        Route::get('fashions', 'fashions')->name('fashions');
-        Route::get('electronics', 'electronics')->name('electronics');
-        Route::get('furnitures', 'furnitures')->name('furnitures');
-        Route::get('grocery', 'grocery')->name('grocery');
-
-
+        
+        
         Route::view('contact', 'contact')->name('contact');
         Route::post('contact', 'contact')->name('contact');
         Route::view('about', 'about')->name('about');
+
+        // sub category route
+        // Route::get('mobiles', 'mobiles')->name('mobiles');
+        // Route::get('fashions', 'fashions')->name('fashions');
+        // Route::get('electronics', 'electronics')->name('electronics');
+        // Route::get('furnitures', 'furnitures')->name('furnitures');
+        // Route::get('grocery', 'grocery')->name('grocery');
+
+        Route::get('/category/{category}', [UserController::class, 'category'])->name('category');
     });
 
     // cart
@@ -60,7 +61,7 @@ Route::middleware('auth')->group(function () {
         Route::post('placeorder', 'placeorder')->name('placeorder');
 
         Route::get('myorder', 'myOrder')->name('myorder');
-        Route::get('search','search')->name('search');
+        Route::get('search', 'search')->name('search');
     });
 
 
@@ -68,20 +69,18 @@ Route::middleware('auth')->group(function () {
 
 
 
-     
-
-Route::get('/checkout', [EsewaController::class, 'checkout'])->name('checkout');
-Route::post('/esewa/pay', [EsewaController::class, 'pay'])->name('esewa.pay');
-Route::get('/esewa/success', [EsewaController::class, 'success'])->name('esewa.success');
-Route::get('/esewa/failure', [EsewaController::class, 'failure'])->name('esewa.failure');
-
-// optional admin listing of payments
-Route::get('/payments', function () {
-    $payments = \App\Models\Payment::orderBy('id', 'desc')->get();
-    return view('payments', compact('payments'));
-});
 
 
+    Route::get('/checkout', [EsewaController::class, 'checkout'])->name('checkout');
+    Route::post('/esewa/pay', [EsewaController::class, 'pay'])->name('esewa.pay');
+    Route::get('/esewa/success', [EsewaController::class, 'success'])->name('esewa.success');
+    Route::get('/esewa/failure', [EsewaController::class, 'failure'])->name('esewa.failure');
+
+    // optional admin listing of payments
+    Route::get('/payments', function () {
+        $payments = \App\Models\Payment::orderBy('id', 'desc')->get();
+        return view('payments', compact('payments'));
+    });
 
 
 
@@ -94,7 +93,7 @@ Route::get('/payments', function () {
 
 
 
- 
+    Route::view('test', 'test');
 });
 
 require __DIR__ . '/auth.php';

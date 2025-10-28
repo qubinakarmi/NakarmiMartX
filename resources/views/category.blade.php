@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title','Fashions')
+@section('title',$data)
 @section('content')
 
  
@@ -72,14 +72,14 @@
 
 
 
-    <section class="my-3">
-        <div class="container">
+    <section class="my-3 d-flex-justify-content-center">
+        <div class="container ">
             <div>
-                <hr><h1 class="text-center"><i class="fa-solid fa-layer-group"></i>Fashions</h1><hr>
+                <hr><h1 class="text-center"><i class="fa-solid fa-layer-group"></i>{{ ucFirst($data) }}</h1><hr>
             </div>
      
 
-            <div class="row">
+            <div class="row ">
                 @forelse ($products as $product)
                     <div class="col-md-3 col-sm-6 mb-4">
                         <div class="card h-100">
@@ -88,7 +88,7 @@
                             <div class="card-body text-center">
                                 <h5 class="card-title">{{ $product->title }}</h5>
                                 <p class="card-text">₹{{ $product->amount }}</p>
-                                <form action="{{ route('add.cart.item') }}" method="Post">
+                                  <form action="{{ route('add.cart.item') }}" method="Post">
                                 @csrf
 
                                     <input type="hidden" name="product_id" value="{{ $product->id }}">
@@ -104,4 +104,20 @@
 
         </div>
     </section>
+    <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
+<div class="d-flex justify-content-center"></div>
+
 @endsection
+
+
+
+
+

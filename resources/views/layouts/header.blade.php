@@ -26,9 +26,10 @@
   <nav class="navbar navbar-expand-lg theme-blue">
     <div class="container">
         <!-- Logo / Brand -->
-        <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}">
-            <h1 class="m-0" style="color: #fff8dc; font-family: Poppins;">NakarmiMartX</h1>
-        </a>
+    
+    <img src="{{ asset('assets/images/nakarmimartx.svg') }}" alt="NakarmiMartX Logo" width="200px" class="me-2">
+</a>
+
 
         <!-- Mobile Toggler -->
         <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -77,7 +78,7 @@
 
                 @if (Route::has('login'))
                     @auth
-                        <a href="{{ route('dashboard') }}" class="btn theme-orange-btn btn-sm text-light">
+                        <a href="{{ route('dashboard') }}" class="btn theme-orange-btn btn-sm text-light rep">
                             <i class="fa-solid fa-user"></i>
                             Dashboard 
                         </a>
@@ -108,19 +109,19 @@
         <div class="collapse navbar-collapse justify-content-center" id="secondaryNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="{{ route('mobiles') }}" class="nav-link text-dark mx-2">Mobiles</a>
+                    <a href="{{ route('category','mobiles') }}" class="nav-link text-dark mx-2">Mobiles</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('fashions') }}" class="nav-link text-dark mx-2">Fashions</a>
+                    <a href="{{ route('category','fashions') }}" class="nav-link text-dark mx-2">Fashions</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('electronics') }}" class="nav-link text-dark mx-2">Electronics</a>
+                    <a href="{{ route('category','electronics') }}" class="nav-link text-dark mx-2">Electronics</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('furnitures') }}" class="nav-link text-dark mx-2">Furnitures</a>
+                    <a href="{{ route('category','furnitures') }}" class="nav-link text-dark mx-2">Furnitures</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('grocery') }}" class="nav-link text-dark mx-2">Grocery</a>
+                    <a href="{{ route('category','grocery') }}" class="nav-link text-dark mx-2">Grocery</a>
                 </li>
             </ul>
         </div>

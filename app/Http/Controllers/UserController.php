@@ -30,11 +30,14 @@ class UserController extends Controller
         }
     }
 
-    // function showProduct()
-    // {
-    //     $products = Product::all();
-    //     return view('home', compact('products'));
-    // }
+
+    public function category($category)
+    {
+        $data = $category;
+        $products = Product::where('category', $category)->paginate(2);
+        return view('category', compact('products', 'category', 'data'));
+    }
+
 
     public function home()
     {
@@ -44,79 +47,30 @@ class UserController extends Controller
         return view('home', compact('products'));
     }
 
-
-    public function mobiles()
-    {
-
-        $products = Product::where('category', 'mobiles')->get();
-
-        return view('mobiles', compact('products'));
-    }
-
-    public function fashions()
-    {
-        // Get only top deals
-        $products = Product::where('category', 'fashions')->get();
-
-        return view('fashions', compact('products'));
-    }
-
-    public function electronics()
-    {
-        // Get only top deals
-        $products = Product::where('category', 'electronics')->get();
-
-        return view('electronics', compact('products'));
-    }
-
-    public function furnitures()
-    {
-        // Get only top deals
-        $products = Product::where('category', 'furnitures')->get();
-
-        return view('furnitures', compact('products'));
-    }
-
-    public function grocery()
-    {
-        // Get only top deals
-        $products = Product::where('category', 'grocery')->get();
-
-        return view('grocery', compact('products'));
-    }
-
-
-
-
-
     function addProduct()
     {
         return view('addProduct');
     }
 
+
+
     function contact(Request $request)
 
     {
-        $request->validate([
+
+        $validated = $request->validate([
             'email' => 'required|email',
             'phone' => 'required|max:10',
-             'address'=>'required|min:10',
-             'message'=>'required',
+            'address' => 'required|min:10',
+            'message' => 'required',
 
 
         ]);
-        $contact = new Contact();
-        $contact->email = $request->email;
-        $contact->phone = $request->phone;
-        $contact->address = $request->address;
-        $contact->message = $request->message;
-        if ($contact->save()) {
-            return redirect()->intended(route('contact'))->with('success', 'Your contact form has been received');
-        }
 
 
+        Contact::create($validated);
 
-
-        return $request->message;
+        return redirect()->route('contact')
+            ->with('success', 'Your contact form has been received!');
     }
 }
