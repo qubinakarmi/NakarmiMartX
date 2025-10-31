@@ -13,8 +13,17 @@ use App\Models\Contact;
 
 class UserController extends Controller
 {
-    function newProduct(Request $request)
+
+    public function addProduct()
     {
+        return view('addProduct');
+    }
+
+    public function newProduct(Request $request)
+    {
+    
+
+
         $product = new Product();
         if ($request->hasFile('file')) {
             $fileName = time() . '.' . $request->file('file')->extension();
@@ -34,7 +43,7 @@ class UserController extends Controller
     public function category($category)
     {
         $data = $category;
-        $products = Product::where('category', $category)->paginate(2);
+        $products = Product::where('category', $category)->paginate(3);
         return view('category', compact('products', 'category', 'data'));
     }
 
@@ -42,19 +51,18 @@ class UserController extends Controller
     public function home()
     {
         // Get only top deals
-        $products = Product::where('is_top_deal', true)->orderBy('created_at', 'desc')->get();
+        $products = Product::where('is_top_deal', true)->orderBy('created_at', 'desc')->paginate(3);
 
         return view('home', compact('products'));
     }
 
-    function addProduct()
-    {
-        return view('addProduct');
-    }
 
 
 
-    function contact(Request $request)
+
+
+
+    public function contact(Request $request)
 
     {
 

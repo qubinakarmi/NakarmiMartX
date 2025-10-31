@@ -12,7 +12,11 @@
             <form action="{{ route('add.product') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <input type="text" class="form-control  my-2" name="title" id="" placeholder="Enter a title">
+                @error('title')<span class="alert alert-danger">{{ $message }}</span>@enderror
+                    
+              
                 <input type="text" class="form-control my-2" name="amount" id="" placeholder="Enter a amount">
+                 @error('amount')<span class="alert alert-danger">{{ $message }}</span>@enderror
          
                 <select name="category" class="form-control my-2">
                     <option value="mobiles">mobiles</option>
@@ -22,7 +26,9 @@
                     <option value="grocery">grocery</option>
 
                 </select>
+                 @error('category')<span class="alert alert-danger">{{ $message }}</span>@enderror
                 <input type="file"class="form-control my-2" name="file">
+                 @error('file')<span class="alert alert-danger">{{ $message }}</span>@enderror
                 <button class="btn btn-info my-2">submit</button>
 
 

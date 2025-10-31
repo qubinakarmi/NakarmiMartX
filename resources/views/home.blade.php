@@ -82,11 +82,11 @@
             </div>
     
 
-            <div class="row">
+            <div class="row d-flex justify-content-center">
                 @forelse ($products as $product)
                     <div class="col-md-3 col-sm-6 mb-4">
                         <div class="card h-100">
-                            <img src="{{ asset('product_images/' . $product->image) }}" class="card-img-top"
+                            <img src="{{ asset('product_images/' . $product->image) }}" class="card-img-top hover-shadow"
                                 alt="{{ $product->title }}">
                             <div class="card-body text-center">
                                 <h5 class="card-title">{{ $product->title }}</h5>
@@ -98,9 +98,7 @@
                                     <input type="hidden" name="product_id" value="{{ $product->id }}">
                                     <button class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i>Add to cart</button>
                                 </form>
-                                 {{-- <a href="{{ route('add.cart',$product->id) }}" class="btn btn-primary">
-                                    <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-                                </a> --}}
+                        
                             </div>
                         </div>
                     </div>
@@ -111,4 +109,7 @@
 
         </div>
     </section>
+    <div class="d-flex justify-content-center my-3">
+        {{ $products->links() }}
+    </div>
 @endsection

@@ -4,7 +4,7 @@
     margin: 0;
     box-sizing: border-box;
     font-family: Poppins;
-    
+
 }
 
 /* Color Theme */
@@ -114,20 +114,20 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: none;
     border-radius: 10px;
-  
+
 }
 
 .card-img-top {
     /* margin-top: 10px; */
     height: 270px;
     object-fit: cover;
-    border-radius: 8px;
+    /* border-radius: 8px; */
 }
 
 .card:hover {
     transform: scale(1.04);
-/* box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px; */
-  box-shadow:0px 8px 25px rgba(0, 0, 0, 0.15) ;
+    /* box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px; */
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
 
 }
 
@@ -153,7 +153,8 @@
     .card {
         width: 100%;
     }
-    .rep{
+
+    .rep {
         margin-right: 15px;
     }
 }
@@ -163,34 +164,66 @@
     /* Bootstrap primary color */
     transition: color 0.3s ease;
 }
-.fa-twitter:hover{
 
-     color: rgb(49, 193, 49);
+.fa-twitter:hover {
+
+    color: rgb(49, 193, 49);
     /* Bootstrap primary color */
     transition: color 0.3s ease;
 
 }
-.fa-instagram:hover{
-     color: #E1306C;
+
+.fa-instagram:hover {
+    color: #E1306C;
     /* Bootstrap primary color */
     transition: color 0.3s ease;
 
 }
-.fa-linkedin-in:hover{
-         color: blue;
+
+.fa-linkedin-in:hover {
+    color: blue;
     /* Bootstrap primary color */
     transition: color 0.3s ease;
 }
-.w-5{
+
+.w-5 {
     height: 15px;
     width: 15px;
 }
-.text-sm{
+
+.text-sm {
     font-size: 1.2rem;
 }
 
 
 
-.card-body{
+.card-body {
     background-color: #f6f6f6;
+}
+
+
+
+.masked-text {
+    font-size: 3rem;
+    font-weight: bold;
+    color: transparent;
+    background-image: url('https://images.unsplash.com/photo-1732535725600-f805d8b33c9c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: 200%;
+    
+    /* Enlarged for smooth animation */
+    background-position: 0 50%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: animate-background 5s infinite alternate linear;
+}
+
+@keyframes animate-background {
+    0% {
+        background-position: 0 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
 }

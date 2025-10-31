@@ -69,7 +69,7 @@ class CartController extends Controller
             ['address'=>'required',]
         );
         $userId = Auth::id();
-        $allcart = Cart::where('user_id', $userId)->get();
+        $allcart = Cart::where('user_id', $userId)->paginate(5);
         foreach ($allcart as $cart) {
             $order = new Order();
             $order->product_id = $cart['product_id'];
@@ -90,7 +90,7 @@ class CartController extends Controller
         $total =  DB::table('orders')
             ->join('products', 'orders.product_id', 'products.id')
             ->where('orders.user_id', $userId)
-            ->get();
+            ->paginate(5);
 
 
         return view('orders', ['products' => $total]);
