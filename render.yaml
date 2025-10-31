@@ -1,11 +1,11 @@
+# render.yaml
 services:
   - type: web
-    name: NakarmiMartX
-    runtime: docker
-    plan: free
-    repo: https://github.com/qubinakarmi/NakarmiMartX
-    buildCommand: |
-      composer install --no-dev --optimize-autoloader
-      php artisan key:generate
-      php artisan migrate --force
-    startCommand: php artisan serve --host 0.0.0.0 --port $PORT
+    name: laravel-app
+    env: docker
+    dockerfilePath: ./Dockerfile
+    # No startCommand here!
+    plan: free  # or starter, depending on your preference
+    regions:
+      - iad  # choose your region (e.g., iad = Washington, D.C.)
+    autoDeploy: true
