@@ -22,8 +22,6 @@ class UserController extends Controller
     public function newProduct(Request $request)
     {
     
-
-
         $product = new Product();
         if ($request->hasFile('file')) {
             $fileName = time() . '.' . $request->file('file')->extension();
